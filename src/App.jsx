@@ -38,10 +38,10 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (getPlayTime.length > 1) {
+    if (getPlayTime.length > 0) {
       const interval = setInterval(() => {
         checkAndPlayAudio();
-      }, 60000); // Memeriksa setiap menit
+      }, 35000); // Memeriksa setiap menit
       return () => clearInterval(interval);
     }
   }, [getPlayTime]);
