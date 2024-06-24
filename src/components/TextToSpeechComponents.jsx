@@ -24,6 +24,10 @@ export const TextToSpeechComponents = () => {
   };
 
   const handleTextToSpeech = async () => {
+     if (!text.trim()) {
+      setError("Teks harus diisi untuk dikonversi menjadi suara.");
+      return;
+    }
     const url = "https://be-node.vercel.app/api/text-to-speech";
 
     try {
