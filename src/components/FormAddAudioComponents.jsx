@@ -10,6 +10,16 @@ const FormAddAudioComponents = () => {
 
   const handleAddAudio = async (e) => {
     e.preventDefault();
+     if (!audioFile) {
+      setError("Please select an audio file.");
+      return;
+    }
+
+    const fileType = audioFile.type;
+    if (fileType !== "audio/mp3" && fileType !== "audio/mpeg") {
+      setError("Hanya bisa berupa MP3.");
+      return;
+    }
     const formData = new FormData();
     formData.append("audio_name_input", audioFile);
     formData.append("keterangan_audio", keteranganAudio);
@@ -50,6 +60,7 @@ const FormAddAudioComponents = () => {
               onChange={(e) => setAudioFile(e.target.files[0])}
               className="shadow-lg h-8 border-current"
               required
+              accept=".mp3"
             />
           </div>
 
@@ -65,9 +76,10 @@ const FormAddAudioComponents = () => {
               required
             />
           </div>
+            {error && <div className="text-red-500 mt-3">{error}</div>}
 
           <div className="flex gap-2 mt-5 ">
-            {error && <div className="text-red-500 mt-3">{error}</div>}
+          
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded"
               type="submit"
