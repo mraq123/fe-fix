@@ -44,9 +44,15 @@ const FormEditProfileComponents = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (user.password !== user.confirmPassword) {
-      setError("Passwords do not match");
+      setError("Password Tidak Sama");
       return;
     }
+
+    if (user.password && user.password.length < 8) {
+      setError("Password minimal 8 karakter");
+      return;
+    }
+
 
     try {
       const xid = sessionStorage.getItem("id");
@@ -58,11 +64,11 @@ const FormEditProfileComponents = () => {
         user
       );
       alert("Berhasil Update Profile");
-      navigate("/dashboard");
+      navigate("/profile");
       setMessage(response.data.message);
       setError("");
     } catch (err) {
-      setError("Terjadi kesalahan saat memperbarui profil");
+      setError("Email Sudah Terdaftar");
       console.error("Error updating profile", err);
     }
   };
