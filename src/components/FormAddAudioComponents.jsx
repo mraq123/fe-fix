@@ -40,7 +40,7 @@ const FormAddAudioComponents = () => {
       navigate("/audio");
     } catch (error) {
       console.error(error);
-      setError("Failed to add audio");
+      setError("Ukuran MP3 Maksimal 2MB");
     }
   };
 
