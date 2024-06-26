@@ -98,6 +98,7 @@ const FormEditProfileComponents = () => {
               name="username"
               value={user.username}
               onChange={handleChange}
+              required
             />
           </div>
           <div className="flex flex-col gap-2 mt-3">
@@ -108,6 +109,7 @@ const FormEditProfileComponents = () => {
               name="email"
               value={user.email}
               onChange={handleChange}
+              required
             />
           </div>
           <div className="flex flex-col gap-2 mt-3">
