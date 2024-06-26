@@ -80,6 +80,7 @@ const FormEditAudioComponents = () => {
               onChange={(e) => setKeteranganAudio(e.target.value)}
               className="shadow-lg rounded h-8 border-current rounded-lg"
               placeholder="Masukkan Keterangan ..."
+              required
             />
           </div>
 
