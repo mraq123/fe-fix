@@ -7,6 +7,7 @@ const FormEditAudioComponents = () => {
   const { id } = useParams();
   const [audioName, setAudioName] = useState(null);
   const [keteranganAudio, setKeteranganAudio] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getAudioById = async () => {
@@ -32,6 +33,18 @@ const FormEditAudioComponents = () => {
 
   const handleEditAudio = async (e) => {
     e.preventDefault();
+     if (audioName) {
+      const fileType = audioName.type;
+      if (fileType !== "audio/mp3" && fileType !== "audio/mpeg") {
+        setError("Hanya bisa berupa MP3.");
+        return;
+      }
+
+      if (audioName.size > 2 * 1024 * 1024) {
+        setError("Ukuran MP3 Maksimal 2MB.");
+        return;
+      }
+    }
     const formData = new FormData();
     formData.append("audio_name_input", audioName); // Ensure this matches the backend key
     formData.append("keterangan_audio", keteranganAudio); // Ensure this matches the backend key
@@ -83,6 +96,7 @@ const FormEditAudioComponents = () => {
               required
             />
           </div>
+             {error && <div className="text-red-500 mt-3">{error}</div>}
 
           <div className="flex gap-2 mt-5">
             <button
