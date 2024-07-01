@@ -61,7 +61,7 @@ const Login = () => {
           />
           <div className="mt-7">
             <h2 className="font-bold text-white">
-              LOGIN SIAMI ANNOUNCER <br /> MAKING BIG THINGS AND TO EASIER{" "}
+              LOGIN SAMI ANNOUNCER <br /> MAKING BIG THINGS AND TO EASIER{" "}
               <br /> AND MORE FUN{" "}
             </h2>
           </div>
