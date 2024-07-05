@@ -16,7 +16,7 @@ const FormEditAudioComponents = () => {
           `https://be-node.vercel.app/audio/${id}`
         );
         console.log(response.data);
-        setAudioName(response.data.audio);
+        // setAudioName(response.data.audio);
         setKeteranganAudio(response.data.keteranganAudio);
       } catch (error) {
         if (error.response) {
