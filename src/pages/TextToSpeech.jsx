@@ -7,7 +7,7 @@ import axios from "axios";
 export const TextToSpeech = () => {
   const navigate = useNavigate();
 
-  const [text, setText] = useState("");
+  // const [text, setText] = useState("");
   const [audioUrl, setAudioUrl] = useState("");
   const [audioPlayed, setAudioPlayed] = useState(false);
 
@@ -35,22 +35,22 @@ export const TextToSpeech = () => {
     GetMe();
   }, []);
 
-  const handleConvert = async () => {
-    try {
-      const response = await axios.post(
-        "https://be-node.vercel.app/tts",
-        { text },
-        { responseType: "blob" }
-      );
-      const url = window.URL.createObjectURL(
-        new Blob([response.data], { type: "audio/mpeg" })
-      );
-      setAudioUrl(url);
-    } catch (error) {
-      console.error("Error converting text to speech:", error);
-      console.log("Error converting text to speech");
-    }
-  };
+  // const handleConvert = async () => {
+  //   try {
+  //     const response = await axios.post(
+  //       "https://be-node.vercel.app/tts",
+  //       { text },
+  //       { responseType: "blob" }
+  //     );
+  //     const url = window.URL.createObjectURL(
+  //       new Blob([response.data], { type: "audio/mpeg" })
+  //     );
+  //     setAudioUrl(url);
+  //   } catch (error) {
+  //     console.error("Error converting text to speech:", error);
+  //     console.log("Error converting text to speech");
+  //   }
+  // };
 
   const handleAudioPlay = () => {
     setAudioPlayed(true);
@@ -59,8 +59,8 @@ export const TextToSpeech = () => {
   return (
     <Layout>
       <TextToSpeechComponents />
-      <textarea value={text} onChange={(e) => setText(e.target.value)} />
-      <button onClick={handleConvert}>Convert to Speech</button>
+{/*       <textarea value={text} onChange={(e) => setText(e.target.value)} /> */}
+{/*       <button onClick={handleConvert}>Convert to Speech</button> */}
       {audioUrl && (
         <div>
           <audio controls onPlay={handleAudioPlay}>
