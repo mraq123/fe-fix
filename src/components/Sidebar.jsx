@@ -38,9 +38,16 @@ const Sidebar = () => {
   }, []);
 
   const Logout = async () => {
-    sessionStorage.removeItem("id");
-    alert("Berhasil Logout");
-    navigate("/");
+    try {
+      const response = await axios.post("https://be-node.vercel.app/logout");
+      if (response.status === 200) {
+        sessionStorage.removeItem("id");
+        alert("Berhasil Logout");
+        navigate("/");
+      }
+    } catch (error) {
+      console.log("Failed to logout:", error);
+    }
   };
   return (
     <div>
